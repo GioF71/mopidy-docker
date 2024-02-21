@@ -32,8 +32,8 @@ RUN rm /build/cleanup.sh
 
 RUN rmdir /build
 
-#FROM scratch
-#COPY --from=BASE / /
+FROM scratch
+COPY --from=BASE / /
 
 LABEL maintainer="GioF71"
 LABEL source="https://github.com/GioF71/mopidy-docker"
