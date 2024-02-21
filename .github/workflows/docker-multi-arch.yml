@@ -4,10 +4,11 @@ on:
   push:
     tags:
       - "release/*"
-      - "main/*"
-      - "devel/*"
       - "feature/*"
       - "daily/*"
+      - "v*" # release
+      - "f*" # feature
+      - "d*" # daily
 
 jobs:
   release:
@@ -48,26 +49,21 @@ jobs:
           distro_id=${{ matrix.base }}
 
           tags=""
-          if [ "${ref_type}" = "branch" ]; then
-            echo "branch mode";
-            if [ "${ref_name}" = "main" ]; then
-              echo "main branch";
-              tags="${image_name}:main-${distro_id}";
-            elif [ "${ref_name}" = "devel" ]; then
-              echo "devel branch";
-              tags="${image_name}:devel-${distro_id}"
-            else
-              echo "other branch ["${ref_name}"]";
-              tags="${image_name}:branch-${ref_name}-${distro_id}";
-            fi
-          elif [ "${ref_type}" = "tag" ]; then
+          if [ "${ref_type}" = "tag" ]; then
             echo "tag mode";
             echo "tag is ["${ref_name}"]";
-
-            tag_type=$(echo ${ref_name} | cut -d '/' -f 1)
-            tag_name=$(echo ${ref_name} | cut -d '/' -f 2) 
-
-            if [ "${tag_type}" = "release" ]; then
+            if [[ "${ref_name}" = *"/"* ]]; then
+              tag_type=$(echo ${ref_name} | cut -d '/' -f 1)
+              tag_name=$(echo ${ref_name} | cut -d '/' -f 2) 
+            else
+              if [[ "${ref_name}" = "v"* || "${ref_name}" = "f"* || "${ref_name}" = "d"* ]]; then
+                tag_type=${ref_name:0:1}
+                tag_name=${ref_name:1}
+              fi
+            fi
+            echo "tag_type=[$tag_type]"
+            echo "tag_name=[$tag_name]"
+            if [[ "${tag_type}" == "release" || "${tag_type}" == "v" ]]; then
               echo "release tag";
               tags="$image_name:${distro_id}"
               tags="$tags,$image_name:${distro_id}-${tag_name}"
@@ -78,16 +74,10 @@ jobs:
               else
                 echo "No special tag found for ["${distro_id}"]";
               fi
-            elif [ "${tag_type}" = "main" ]; then
-              echo "main tag";
-              tags="${image_name}:main-${tag_name}-${distro_id}";
-            elif [ "${tag_type}" = "devel" ]; then
-              echo "devel tag";
-              tags="${image_name}:devel-${tag_name}-${distro_id}";
-            elif [ "${tag_type}" = "feature" ]; then
-              echo "devel tag";
+            elif [[ "${tag_type}" == "feature" || "${tag_type}" == "f" ]]; then
+              echo "feature tag";
               tags="${image_name}:feature-${tag_name}-${distro_id}";
-            elif [ "${tag_type}" = "daily" ]; then
+            elif [[ "${tag_type}" = "daily" || "${tag_type}" = "d" ]]; then
               echo "daily build";
               tags="${image_name}:daily-${distro_id}";
               select_special_tags=${special_tags["${distro_id}"]};
