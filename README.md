@@ -100,3 +100,4 @@ After this action, you can stop the container (CTRL-C), and then start it normal
 
 `docker-compose up -d`
 
+The application should be accessible at the host-ip at port 6680.  
