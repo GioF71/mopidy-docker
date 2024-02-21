@@ -27,8 +27,6 @@ In order to build the docker image, switch to the root directory of the repo and
 
 `./local-build.sh`
 
-I will publish pre-built images as soon as possible.  
-
 ## Configuration
 
 The configuration if driven by environment variables. You should not need to edit the configuration files directly.  
