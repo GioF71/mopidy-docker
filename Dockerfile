@@ -1,4 +1,5 @@
-FROM ubuntu:jammy AS BASE
+ARG BASE_IMAGE
+FROM ${BASE_IMAGE:-ubuntu:jammy} AS BASE
 
 RUN apt-get update
 RUN apt-get install -y wget
