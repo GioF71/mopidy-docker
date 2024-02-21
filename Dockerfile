@@ -22,15 +22,14 @@ RUN python3 -m pip install --target /opt/mopidy-venv Mopidy-Tidal
 RUN python3 -m pip install --target /opt/mopidy-venv Mopidy-Local
 RUN python3 -m pip install --target /opt/mopidy-venv Mopidy-Scrobbler
 
-RUN mkdir -p /app/bin
+RUN mkdir -p /build
 
-COPY app/bin/cleanup.sh /app/bin/
-RUN chmod u+x /app/bin/cleanup.sh
-RUN /app/bin/cleanup.sh
-RUN rm /app/bin/cleanup.sh
+COPY build/cleanup.sh /build
+RUN chmod u+x /build/cleanup.sh
+RUN /build/cleanup.sh
+RUN rm /build/cleanup.sh
 
-RUN rmdir /app/bin
-RUN rmdir /app
+RUN rmdir /build
 
 #FROM scratch
 #COPY --from=BASE / /
