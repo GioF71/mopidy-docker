@@ -14,12 +14,12 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Docker Hub README & description sync
         uses: meeDamian/sync-readme@v1.0.6
         with:
           user: ${{ secrets.DOCKER_USERNAME }}
-          pass: ${{ secrets.DOCKER_PASSWORD }}
+          pass: ${{ secrets.DOCKER_TOKEN }}
           slug: ${{ secrets.DOCKER_USERNAME }}/mopidy
           readme: ./README.md
           description: Run Mopidy on docker
