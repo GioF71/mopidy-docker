@@ -16,10 +16,12 @@ Mopidy|[Main site](https://mopidy.com/)
 python-tidal|[GitHub repo](https://github.com/tamland/python-tidal)
 mopidy-tidal|[GitHub repo](https://github.com/tehkillerbee/mopidy-tidal)
 
-## Links
+## Repositories
 
-Source: [GitHub](https://github.com/giof71/mopidy-docker)  
-Images: [DockerHub](https://hub.docker.com/r/giof71/mopidy)
+Repo Type|Link
+:---|:---
+Source|[GitHub](https://github.com/giof71/mopidy-docker)  
+Docker Images|[DockerHub](https://hub.docker.com/r/giof71/mopidy)
 
 ## Build
 
