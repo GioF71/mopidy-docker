@@ -20,7 +20,7 @@ mopidy-tidal|[GitHub repo](https://github.com/tehkillerbee/mopidy-tidal)
 
 Repo Type|Link
 :---|:---
-Source|[GitHub](https://github.com/giof71/mopidy-docker)  
+Source Code|[GitHub](https://github.com/giof71/mopidy-docker)  
 Docker Images|[DockerHub](https://hub.docker.com/r/giof71/mopidy)
 
 ## Build
