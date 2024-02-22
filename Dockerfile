@@ -18,10 +18,11 @@ RUN python3 -m venv /opt/mopidy-venv
 ENV PATH="/opt/mopidy-venv/bin:$PATH"
 
 # extensions
-RUN python3 -m pip install --target /opt/mopidy-venv Mopidy-Iris
-RUN python3 -m pip install --target /opt/mopidy-venv Mopidy-Tidal
-RUN python3 -m pip install --target /opt/mopidy-venv Mopidy-Local
-RUN python3 -m pip install --target /opt/mopidy-venv Mopidy-Scrobbler
+RUN python3 -m pip install --target /opt/mopidy-venv --upgrade Mopidy-Iris
+RUN python3 -m pip install --target /opt/mopidy-venv --upgrade Mopidy-Tidal
+RUN python3 -m pip install --target /opt/mopidy-venv --upgrade Mopidy-Local
+RUN python3 -m pip install --target /opt/mopidy-venv --upgrade Mopidy-Scrobbler
+RUN python3 -m pip install --target /opt/mopidy-venv --upgrade Mopidy-MPD
 
 RUN mkdir -p /build
 
@@ -63,6 +64,8 @@ ENV TIDAL_QUALITY ""
 
 ENV FILE_ENABLED ""
 ENV LOCAL_ENABLED ""
+
+ENV MPD_ENABLED ""
 
 COPY app/bin/entrypoint.sh /app/bin/
 RUN chmod +x /app/bin/entrypoint.sh

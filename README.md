@@ -44,6 +44,7 @@ LOCAL_ENABLED|Enables the Local plugin, defaults to `no`
 SCROBBLER_ENABLED|Enables the Scrobbler plugin, defaults to `no`
 SCROBBLER_USERNAME|Last.FM username
 SCROBBLER_PASSWORD|Last.FM password
+MPD_ENABLED|Enables the MPD plugin, defaults to `no`
 USER_MODE|Set to `yes` to enable user mode
 PUID|The uid for `USER_MODE`, defaults to `1000`
 PGID|The gid for `USER_MODE`, defaults to `1000`

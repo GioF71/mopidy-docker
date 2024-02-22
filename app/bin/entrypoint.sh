@@ -242,6 +242,27 @@ else
     echo "enabled = false" >> $CONFIG_DIR/local.conf
 fi
 
+ENABLE_MPD=0
+if [[ -z "${MPD_ENABLED}" ]]; then
+    ENABLE_MPD=0
+else
+    if [[ "${MPD_ENABLED^^}" == "YES" ]] || [[ "${MPD_ENABLED^^}" == "Y" ]]; then
+        ENABLE_MPD=1
+    elif [[ "${MPD_ENABLED^^}" != "NO" ]] && [[ "${MPD_ENABLED^^}" != "N" ]]; then
+        echo "Invalid MPD_ENABLED=[$MPD_ENABLED]"
+        exit 1
+    fi
+fi
+
+if [[ $ENABLE_MPD -eq 1 ]]; then
+    echo "[mpd]" > $CONFIG_DIR/mpd.conf
+    echo "enabled = true" >> $CONFIG_DIR/mpd.conf
+    echo "hostname = 0.0.0.0" >> $CONFIG_DIR/mpd.conf
+else
+    echo "[mpd]" > $CONFIG_DIR/mpd.conf
+    echo "enabled = false" >> $CONFIG_DIR/mpd.conf
+fi
+
 echo "COMMAND_LINE=[${COMMAND_LINE}]"
 
 echo "Configuration: "
