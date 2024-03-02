@@ -4,7 +4,7 @@ Run Mopidy in Docker
 
 ## Description
 
-I wanted to be able to play from Tidal to my audio devices (typically Raspberry Pi SBC), directly from a browser, without using Tidal Connect, not available on any device/platform.  
+I wanted to be able to play from Tidal to my audio devices (typically Raspberry Pi SBCs), directly from a browser, without using Tidal Connect, not available on any device/platform.  
 [Mopidy](https://mopidy.com/) along with the [Mopidy-Tidal plugin](https://github.com/tehkillerbee/mopidy-tidal) offer a very nice interface, and represent a good response to this requirement.  
 I have only used it with alsa output, but I will probably add support for PulseAudio soon. Note that this is not terribly important to me, at least when using Tidal, which my main scenario.  Using this application with PulseAudio would not offer any particular advantage compared to the Tidal Web Player.  
 
@@ -13,8 +13,8 @@ I have only used it with alsa output, but I will probably add support for PulseA
 PROJECT|URL
 :---|:---
 Mopidy|[Main site](https://mopidy.com/)
-python-tidal|[GitHub repo](https://github.com/tamland/python-tidal)
 mopidy-tidal|[GitHub repo](https://github.com/tehkillerbee/mopidy-tidal)
+python-tidal|[GitHub repo](https://github.com/tamland/python-tidal)
 
 ## Links
 
@@ -39,6 +39,8 @@ AUDIO_OUTPUT|Audio output configuration
 RESTORE_STATE|Restore last state on start, defaults to `no`
 TIDAL_ENABLED|Enables the Tidal plugin, defaults to `no`
 TIDAL_QUALITY|Set quality for the Tidal plugin, defaults to `LOSSLESS`
+TIDAL_AUTH_METHOD|Authentication method, can be `OAUTH` (default) or `PKCE`
+TIDAL_LOGIN_SERVER_PORT|Required for PKCE authentication
 FILE_ENABLED|Enables the File plugin, defaults to `no`
 LOCAL_ENABLED|Enables the Local plugin, defaults to `no`
 SCROBBLER_ENABLED|Enables the Scrobbler plugin, defaults to `no`

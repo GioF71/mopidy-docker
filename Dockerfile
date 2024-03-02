@@ -24,6 +24,8 @@ RUN python3 -m pip install --target /opt/mopidy-venv --upgrade Mopidy-Local
 RUN python3 -m pip install --target /opt/mopidy-venv --upgrade Mopidy-Scrobbler
 RUN python3 -m pip install --target /opt/mopidy-venv --upgrade Mopidy-MPD
 
+RUN apt-get install -y gstreamer1.0-plugins-bad
+
 RUN mkdir -p /build
 
 COPY build/cleanup.sh /build
@@ -61,6 +63,8 @@ ENV SCROBBLER_PASSWORD ""
 
 ENV TIDAL_ENABLED ""
 ENV TIDAL_QUALITY ""
+ENV TIDAL_LOGIN_SERVER_PORT ""
+ENV TIDAL_AUTH_METHOD ""
 
 ENV FILE_ENABLED ""
 ENV LOCAL_ENABLED ""

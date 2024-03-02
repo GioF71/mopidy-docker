@@ -169,6 +169,12 @@ if [[ $ENABLE_TIDAL -eq 1 ]]; then
     fi
     # TODO check valid values? Maybe one day ...
     echo "quality = ${TIDAL_QUALITY}" >> $CONFIG_DIR/tidal.conf
+    if [[ -n "${TIDAL_AUTH_METHOD}" ]]; then
+        echo "auth_method = ${TIDAL_AUTH_METHOD}" >> $CONFIG_DIR/tidal.conf
+    fi
+    if [[ -n "${TIDAL_LOGIN_SERVER_PORT}" ]]; then
+        echo "login_server_port = ${TIDAL_LOGIN_SERVER_PORT}" >> $CONFIG_DIR/tidal.conf
+    fi
 else
     echo "[tidal]" > $CONFIG_DIR/tidal.conf
     echo "enabled = false" >> $CONFIG_DIR/tidal.conf
