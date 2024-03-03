@@ -149,9 +149,9 @@ if [[ -n "${AUDIO_OUTPUT}" ]]; then
     echo "output = ${AUDIO_OUTPUT}" >> $CONFIG_DIR/audio.conf
 fi
 
-/app/bin/tidal.sh
-/app/bin/spotify.sh
-/app/bin/scrobbler.sh
+source /app/bin/tidal.sh
+source /app/bin/spotify.sh
+source /app/bin/scrobbler.sh
 
 ENABLE_FILE=0
 if [[ -z "${FILE_ENABLED}" ]]; then

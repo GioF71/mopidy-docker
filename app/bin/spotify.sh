@@ -32,3 +32,5 @@ else
     echo "[spotify]" > $CONFIG_DIR/spotify.conf
     echo "enabled = false" >> $CONFIG_DIR/spotify.conf
 fi
+
+cat $CONFIG_DIR/spotify.conf
