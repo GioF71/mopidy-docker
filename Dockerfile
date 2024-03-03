@@ -13,20 +13,21 @@ RUN apt-get install -y python3-pip
 
 RUN apt-get install -y alsa-utils
 
-RUN apt-get install -y python3-venv
-RUN python3 -m venv /opt/mopidy-venv
-ENV PATH="/opt/mopidy-venv/bin:$PATH"
+#RUN apt-get install -y python3-venv
+#RUN python3 -m venv /opt/mopidy-venv
+#ENV PATH="/opt/mopidy-venv/bin:$PATH"
 
 # extensions
-RUN python3 -m pip install --target /opt/mopidy-venv --upgrade Mopidy-Iris
-RUN python3 -m pip install --target /opt/mopidy-venv --upgrade Mopidy-Tidal
-RUN python3 -m pip install --target /opt/mopidy-venv --upgrade Mopidy-Local
-RUN python3 -m pip install --target /opt/mopidy-venv --upgrade Mopidy-Scrobbler
-RUN python3 -m pip install --target /opt/mopidy-venv --upgrade Mopidy-MPD
+RUN python3 -m pip install --upgrade Mopidy-Iris
+RUN python3 -m pip install --upgrade Mopidy-Tidal
+RUN python3 -m pip install --upgrade Mopidy-Local
+RUN python3 -m pip install --upgrade Mopidy-Scrobbler
+RUN python3 -m pip install --upgrade Mopidy-MPD
 
 RUN apt-get install -y gstreamer1.0-plugins-bad
 
 RUN apt-get install -y mopidy-spotify
+RUN python3 -m pip install --upgrade Mopidy-MusicBox-Webclient
 
 RUN mkdir -p /build
 
@@ -37,8 +38,8 @@ RUN rm /build/cleanup.sh
 
 RUN rmdir /build
 
-FROM scratch
-COPY --from=BASE / /
+#FROM scratch
+#COPY --from=BASE / /
 
 LABEL maintainer="GioF71"
 LABEL source="https://github.com/GioF71/mopidy-docker"

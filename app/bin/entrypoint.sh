@@ -78,7 +78,8 @@ if [[ "${current_user_id}" == "0" && (! (${USER_MODE^^} == "NO" || ${USER_MODE^^
     fi
 fi
 
-COMMAND_LINE="PYTHONPATH=/opt/mopidy-venv mopidy"
+#COMMAND_LINE="PYTHONPATH=/opt/mopidy-venv mopidy"
+COMMAND_LINE="mopidy"
 
 # config dir
 CONFIG_DIR=/config
