@@ -26,6 +26,8 @@ RUN python3 -m pip install --target /opt/mopidy-venv --upgrade Mopidy-MPD
 
 RUN apt-get install -y gstreamer1.0-plugins-bad
 
+RUN apt-get install -y mopidy-spotify
+
 RUN mkdir -p /build
 
 COPY build/cleanup.sh /build
@@ -66,12 +68,18 @@ ENV TIDAL_QUALITY ""
 ENV TIDAL_LOGIN_SERVER_PORT ""
 ENV TIDAL_AUTH_METHOD ""
 
+ENV SPOTIFY_ENABLED ""
+ENV SPOTIFY_CLIENT_ID ""
+ENV SPOTIFY_SECRET ""
+ENV SPOTIFY_USERNAME ""
+ENV SPOTIFY_PASSWORD ""
+
 ENV FILE_ENABLED ""
 ENV LOCAL_ENABLED ""
 
 ENV MPD_ENABLED ""
 
-COPY app/bin/entrypoint.sh /app/bin/
-RUN chmod +x /app/bin/entrypoint.sh
+COPY app/bin/*.sh /app/bin/
+RUN chmod +x /app/bin/*.sh
 
 ENTRYPOINT ["/app/bin/entrypoint.sh"]

@@ -149,62 +149,9 @@ if [[ -n "${AUDIO_OUTPUT}" ]]; then
     echo "output = ${AUDIO_OUTPUT}" >> $CONFIG_DIR/audio.conf
 fi
 
-ENABLE_TIDAL=0
-if [[ -z "${TIDAL_ENABLED}" ]]; then
-    ENABLE_TIDAL=0
-else
-    if [[ "${TIDAL_ENABLED^^}" == "YES" ]] || [[ "${TIDAL_ENABLED^^}" == "Y" ]]; then
-        ENABLE_TIDAL=1
-    elif [[ "${TIDAL_ENABLED^^}" != "NO" ]] && [[ "${TIDAL_ENABLED^^}" != "N" ]]; then
-        echo "Invalid TIDAL_ENABLED=[$TIDAL_ENABLED]"
-        exit 1
-    fi
-fi
-
-if [[ $ENABLE_TIDAL -eq 1 ]]; then
-    echo "[tidal]" > $CONFIG_DIR/tidal.conf
-    echo "enabled = true" >> $CONFIG_DIR/tidal.conf
-    if [[ -z "${TIDAL_QUALITY}" ]]; then
-        TIDAL_QUALITY=LOSSLESS
-    fi
-    # TODO check valid values? Maybe one day ...
-    echo "quality = ${TIDAL_QUALITY}" >> $CONFIG_DIR/tidal.conf
-    if [[ -n "${TIDAL_AUTH_METHOD}" ]]; then
-        echo "auth_method = ${TIDAL_AUTH_METHOD}" >> $CONFIG_DIR/tidal.conf
-    fi
-    if [[ -n "${TIDAL_LOGIN_SERVER_PORT}" ]]; then
-        echo "login_server_port = ${TIDAL_LOGIN_SERVER_PORT}" >> $CONFIG_DIR/tidal.conf
-    fi
-else
-    echo "[tidal]" > $CONFIG_DIR/tidal.conf
-    echo "enabled = false" >> $CONFIG_DIR/tidal.conf
-fi
-
-ENABLE_SCROBBLER=0
-if [[ -z "${SCROBBLER_ENABLED}" ]]; then
-    ENABLE_SCROBBLER=0
-else
-    if [[ "${SCROBBLER_ENABLED^^}" == "YES" ]] || [[ "${SCROBBLER_ENABLED^^}" == "Y" ]]; then
-        ENABLE_SCROBBLER=1
-    elif [[ "${SCROBBLER_ENABLED^^}" != "NO" ]] && [[ "${SCROBBLER_ENABLED^^}" != "N" ]]; then
-        echo "Invalid SCROBBLER_ENABLED=[$SCROBBLER_ENABLED]"
-        exit 1
-    fi
-fi
-
-if [[ $ENABLE_SCROBBLER -eq 1 ]]; then
-    if [[ -n "${SCROBBLER_USERNAME}" ]] && [[ -n "${SCROBBLER_PASSWORD}" ]]; then
-        echo "[scrobbler]" > $CONFIG_DIR/scrobbler.conf
-        echo "enabled = true" >> $CONFIG_DIR/scrobbler.conf
-        echo "username = ${SCROBBLER_USERNAME}" >> $CONFIG_DIR/scrobbler.conf
-        echo "password = ${SCROBBLER_PASSWORD}" >> $CONFIG_DIR/scrobbler.conf
-    else
-        echo "No credentials for the scrobbler plugin"
-    fi
-else
-    echo "[scrobbler]" > $CONFIG_DIR/scrobbler.conf
-    echo "enabled = false" >> $CONFIG_DIR/scrobbler.conf
-fi
+/app/bin/tidal.sh
+/app/bin/spotify.sh
+/app/bin/scrobbler.sh
 
 ENABLE_FILE=0
 if [[ -z "${FILE_ENABLED}" ]]; then
