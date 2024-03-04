@@ -169,11 +169,20 @@ if [[ $ENABLE_TIDAL -eq 1 ]]; then
     fi
     # TODO check valid values? Maybe one day ...
     echo "quality = ${TIDAL_QUALITY}" >> $CONFIG_DIR/tidal.conf
+    if [[ -n "${TIDAL_LOGIN_METHOD}" ]]; then
+        echo "login_method = ${TIDAL_LOGIN_METHOD}" >> $CONFIG_DIR/tidal.conf
+    fi
     if [[ -n "${TIDAL_AUTH_METHOD}" ]]; then
         echo "auth_method = ${TIDAL_AUTH_METHOD}" >> $CONFIG_DIR/tidal.conf
     fi
     if [[ -n "${TIDAL_LOGIN_SERVER_PORT}" ]]; then
         echo "login_server_port = ${TIDAL_LOGIN_SERVER_PORT}" >> $CONFIG_DIR/tidal.conf
+    fi
+    if [[ -n "${TIDAL_PLAYLIST_CACHE_REFRESH_SECS}" ]]; then
+        echo "playlist_cache_refresh_secs = ${TIDAL_PLAYLIST_CACHE_REFRESH_SECS}" >> $CONFIG_DIR/tidal.conf
+    fi
+    if [[ -n "${TIDAL_LAZY}" ]]; then
+        echo "lazy = ${TIDAL_LAZY}" >> $CONFIG_DIR/tidal.conf
     fi
 else
     echo "[tidal]" > $CONFIG_DIR/tidal.conf
