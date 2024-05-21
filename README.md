@@ -94,6 +94,7 @@ services:
       - TIDAL_QUALITY=LOSSLESS
     ports:
       - 6680:6680
+      - 8989:8989
     volumes:
       - ./config:/config
       - ./cache:/cache
