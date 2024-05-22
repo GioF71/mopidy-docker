@@ -287,7 +287,7 @@ eval $CONFIG_COMMAND_LINE
 echo "CMD_LINE=[$CMD_LINE]"
 if [[ $current_user_id -eq 0 ]]; then
     echo "Container running as root"
-    if [ $USE_USER_MODE == "Y" ]; then
+    if [[ $USE_USER_MODE == "Y" ]]; then
         echo "User mode enabled"
         su - $USER_NAME -c "$CMD_LINE"
     else
