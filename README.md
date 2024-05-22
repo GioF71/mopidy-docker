@@ -8,6 +8,12 @@ I wanted to be able to play from Tidal to my audio devices (typically Raspberry 
 [Mopidy](https://mopidy.com/) along with the [Mopidy-Tidal plugin](https://github.com/tehkillerbee/mopidy-tidal) offer a very nice interface, and represent a good response to this requirement.  
 I have only used it with alsa output, but I will probably add support for PulseAudio soon. Note that this is not terribly important to me, at least when using Tidal, which my main scenario.  Using this application with PulseAudio would not offer any particular advantage compared to the Tidal Web Player.  
 
+## Support
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/H2H7UIN5D)  
+Please see the [Goal](https://ko-fi.com/giof71/goal?g=0).  
+Please note that support goal is limited to cover running costs for subscriptions to music services.
+
 ## References
 
 PROJECT|URL
