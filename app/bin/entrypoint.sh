@@ -132,6 +132,10 @@ fi
 
 COMMAND_LINE="$COMMAND_LINE --config $CONFIG_DIR --option core/cache_dir=${CACHE_DIR} --option core/data_dir=${DATA_DIR}"
 
+# Logging
+echo "[logging]" > $CONFIG_DIR/logging.conf
+echo "enabled = true" >> $CONFIG_DIR/logging.conf
+
 # IRIS web gui
 echo "[iris]" > $CONFIG_DIR/iris.conf
 echo "enabled = true" >> $CONFIG_DIR/iris.conf
@@ -289,7 +293,7 @@ if [[ $current_user_id -eq 0 ]]; then
     echo "Container running as root"
     if [[ $USE_USER_MODE == "Y" ]]; then
         echo "User mode enabled"
-        su - $USER_NAME -c "$CMD_LINE"
+        su - $USER_NAME -c "$COMMAND_LINE"
     else
         echo "user mode not enabled"
         eval "$COMMAND_LINE"
