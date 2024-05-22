@@ -26,7 +26,7 @@ HOME_DIR=$DEFAULT_HOME_DIR
 echo "USER_MODE=[${USER_MODE}]"
 
 if [[ "${current_user_id}" == "0" && (! (${USER_MODE^^} == "NO" || ${USER_MODE^^} == "N")) ]]; then
-    if [[ "${USER_MODE^^}" == "YES" || "${USER_MODE^^}" == "Y" ]]; then
+    if [[ "${USER_MODE^^}" == "YES" || "${USER_MODE^^}" == "Y" || -n "${PUID}" ]]; then
         USE_USER_MODE="Y"
         echo "User mode enabled"
         echo "Creating user ...";
@@ -131,10 +131,6 @@ if [[ -n "${RESTORE_STATE}" ]]; then
 fi
 
 COMMAND_LINE="$COMMAND_LINE --config $CONFIG_DIR --option core/cache_dir=${CACHE_DIR} --option core/data_dir=${DATA_DIR}"
-
-# Logging
-echo "[logging]" > $CONFIG_DIR/logging.conf
-echo "enabled = true" >> $CONFIG_DIR/logging.conf
 
 # IRIS web gui
 echo "[iris]" > $CONFIG_DIR/iris.conf
