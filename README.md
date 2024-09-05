@@ -119,3 +119,17 @@ After this action, you can stop the container (CTRL-C), and then start it normal
 `docker-compose up -d`
 
 The application should be accessible at the host-ip at port 6680.  
+
+## Change History
+
+Change Data|Major Changes
+:---|:---
+2024-09-05|Fixed user management
+2024-09-05|Switch to ubuntu noble
+2024-05-22|Enable user mode if PUID is set
+2024-05-22|Add support for user mode
+2024-03-04|Add configuration options
+2024-03-03|Add pkce support for Tidal plugin
+2024-02-22|Add support for the MPD plugin
+2024-02-21|Review build process
+2024-02-21|First working version
