@@ -167,6 +167,64 @@ if [[ -n "${AUDIO_OUTPUT}" ]]; then
     echo "output = ${AUDIO_OUTPUT}" >> $CONFIG_DIR/audio.conf
 fi
 
+ENABLE_JELLYFIN=0
+if [[ -z "${JELLYFIN_ENABLED}" ]]; then
+    ENABLE_JELLYFIN=0
+else
+    if [[ "${JELLYFIN_ENABLED^^}" == "YES" ]] || [[ "${JELLYFIN_ENABLED^^}" == "Y" ]]; then
+        ENABLE_JELLYFIN=1
+    elif [[ "${JELLYFIN_ENABLED^^}" != "NO" ]] && [[ "${JELLYFIN_ENABLED^^}" != "N" ]]; then
+        echo "Invalid JELLYFIN_ENABLED=[$JELLYFIN_ENABLED]"
+        exit 1
+    fi
+fi
+
+if [[ $ENABLE_JELLYFIN -eq 1 ]]; then
+    echo "[jellyfin]" > $CONFIG_DIR/jellyfin.conf
+    echo "enabled = true" >> $CONFIG_DIR/jellyfin.conf
+
+    if [[ -n "${JELLYFIN_HOSTNAME}" ]]; then
+        echo "hostname = ${JELLYFIN_HOSTNAME}" >> $CONFIG_DIR/jellyfin.conf
+    else
+        echo "Hostname not specified for Jellyfin plugin!"
+        exit 1
+    fi
+    if [[ -n "${JELLYFIN_USERNAME}" ]]; then
+        echo "username = ${JELLYFIN_USERNAME}" >> $CONFIG_DIR/jellyfin.conf
+    else
+        echo "Username not specified for Jellyfin plugin!"
+    fi
+    if [[ -n "${JELLYFIN_PASSWORD}" ]]; then
+        echo "password = ${JELLYFIN_PASSWORD}" >> $CONFIG_DIR/jellyfin.conf
+    else
+        echo "Password not specified for Jellyfin plugin!"
+    fi
+    if [[ -n "${JELLYFIN_USER_ID}" ]]; then
+        echo "user_id = ${JELLYFIN_USER_ID}" >> $CONFIG_DIR/jellyfin.conf
+    else
+        echo "User id not specified for Jellyfin plugin!"
+    fi
+    if [[ -n "${JELLYFIN_TOKEN}" ]]; then
+        echo "token = ${JELLYFIN_TOKEN}" >> $CONFIG_DIR/jellyfin.conf
+    else
+        echo "Token not specified for Jellyfin plugin!"
+    fi
+    if [[ -n "${JELLYFIN_LIBRARIES}" ]]; then
+        echo "libraries = ${JELLYFIN_LIBRARIES}" >> $CONFIG_DIR/jellyfin.conf
+    else
+        echo "Libraries not specified for Jellyfin plugin, will use the default ""Music"""
+    fi
+    if [[ -n "${JELLYFIN_ALBUM_ARTIST_SORT}" ]]; then
+        echo "albumartistsort = ${JELLYFIN_ALBUM_ARTIST_SORT}" >> $CONFIG_DIR/jellyfin.conf
+    fi
+    if [[ -n "${JELLYFIN_ALBUM_FORMAT}" ]]; then
+        echo "album_format = ${JELLYFIN_ALBUM_FORMAT}" >> $CONFIG_DIR/jellyfin.conf
+    fi
+    if [[ -n "${JELLYFIN_MAX_BITRATE}" ]]; then
+        echo "max_bitrate = ${JELLYFIN_MAX_BITRATE}" >> $CONFIG_DIR/jellyfin.conf
+    fi
+fi
+
 ENABLE_TIDAL=0
 if [[ -z "${TIDAL_ENABLED}" ]]; then
     ENABLE_TIDAL=0

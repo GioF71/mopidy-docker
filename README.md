@@ -6,6 +6,7 @@ Run Mopidy in Docker
 
 I wanted to be able to play from Tidal to my audio devices (typically Raspberry Pi SBCs), directly from a browser, without using Tidal Connect, not available on any device/platform.  
 [Mopidy](https://mopidy.com/) along with the [Mopidy-Tidal plugin](https://github.com/tehkillerbee/mopidy-tidal) offer a very nice interface, and represent a good response to this requirement.  
+Also, I like Mopidy to be able to connect to [Jellyfin](https://jellyfin.org/) for music playback, as I am starting to explore this option.  
 I have only used it with alsa output, but I will probably add support for PulseAudio soon. Note that this is not terribly important to me, at least when using Tidal, which my main scenario.  Using this application with PulseAudio would not offer any particular advantage compared to the Tidal Web Player.  
 
 ## Support
@@ -21,6 +22,7 @@ PROJECT|URL
 Mopidy|[Main site](https://mopidy.com/)
 mopidy-tidal|[GitHub repo](https://github.com/tehkillerbee/mopidy-tidal)
 python-tidal|[GitHub repo](https://github.com/tamland/python-tidal)
+mopidy-jellyfin|[GitHub repo](https://github.com/jellyfin/mopidy-jellyfin)
 
 ## Repositories
 
@@ -52,6 +54,16 @@ TIDAL_AUTH_METHOD|Authentication method, can be `OAUTH` (default) or `PKCE`
 TIDAL_PLAYLIST_CACHE_REFRESH_SECS|Playlist content refresh time, defaults to `0`
 TIDAL_LOGIN_SERVER_PORT|Required for PKCE authentication
 TIDAL_LAZY|Lazy connection, `true` or `false` (default)
+JELLYFIN_ENABLED|Enables the Jellyfin plugin, defaults to `no`
+JELLYFIN_HOSTNAME|Hostname for Jellyfin (mandatory)
+JELLYFIN_USERNAME|Username for Jellyfin
+JELLYFIN_PASSWORD|Password for Jellyfin
+JELLYFIN_USER_ID|User Id for Jellyfin
+JELLYFIN_TOKEN|Token for Jellyfin
+JELLYFIN_LIBRARIES|Libraries for Jellyfin (optional, defaults to `Music`)
+JELLYFIN_ALBUM_ARTIST_SORT|Optional, defaults to `false`
+JELLYFIN_ALBUM_FORMAT|Optional, will default to `"{Name}"`
+JELLYFIN_MAX_BITRATE|Optional, numeric
 FILE_ENABLED|Enables the File plugin, defaults to `no`
 LOCAL_ENABLED|Enables the Local plugin, defaults to `no`
 SCROBBLER_ENABLED|Enables the Scrobbler plugin, defaults to `no`
@@ -124,6 +136,7 @@ The application should be accessible at the host-ip at port 6680.
 
 Change Data|Major Changes
 :---|:---
+2024-09-08|Add support for the jellyfin plugin
 2024-09-05|Fixed user management
 2024-09-05|Switch to ubuntu noble
 2024-05-22|Enable user mode if PUID is set
