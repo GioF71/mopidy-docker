@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build . -t giof71/mopidy:latest --progress=plain "$@"
+docker build . -t giof71/mopidy:local --progress=plain "$@"
