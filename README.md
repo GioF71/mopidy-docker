@@ -136,6 +136,7 @@ The application should be accessible at the host-ip at port 6680.
 
 Change Data|Major Changes
 :---|:---
+2024-11-10|Rebuild with version [v0.3.8](https://github.com/tehkillerbee/mopidy-tidal/releases/tag/v0.3.8)
 2024-09-08|Add support for the jellyfin plugin
 2024-09-05|Fixed user management
 2024-09-05|Switch to ubuntu noble
