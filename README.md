@@ -33,7 +33,7 @@ Docker Images|[Docker Hub](https://hub.docker.com/r/giof71/mopidy)
 
 ## Build
 
-If, for any reason, you don't want or cannot use the image I publish to the [Docker Hub Repository](https://hub.docker.com/r/giof71/mopidy), you can build the image locally by switching to the root directory of the repository and issuing the following command:
+If, for any reason, you don't want or cannot use the images I publish to the [Docker Hub Repository](https://hub.docker.com/r/giof71/mopidy), you can build the image locally by switching to the root directory of the repository and issuing the following command:
 
 `./local-build.sh`
 
