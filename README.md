@@ -29,7 +29,7 @@ mopidy-jellyfin|[GitHub repo](https://github.com/jellyfin/mopidy-jellyfin)
 Repo Type|Link
 :---|:---
 Source Code|[GitHub](https://github.com/giof71/mopidy-docker)  
-Docker Images|[DockerHub](https://hub.docker.com/r/giof71/mopidy)
+Docker Images|[Docker Hub](https://hub.docker.com/r/giof71/mopidy)
 
 ## Build
 
