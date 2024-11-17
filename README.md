@@ -50,9 +50,9 @@ RESTORE_STATE|Restore last state on start, defaults to `no`
 TIDAL_ENABLED|Enables the Tidal plugin, defaults to `no`
 TIDAL_QUALITY|Set quality for the Tidal plugin, defaults to `LOSSLESS`
 TIDAL_LOGIN_METHOD|Login method, can be `BLOCK` (default), `AUTO` or `HACK`
-TIDAL_AUTH_METHOD|Authentication method, can be `OAUTH` (default) or `PKCE`
+TIDAL_AUTH_METHOD|Authentication method, can be `OAUTH` (default) or `PKCE` (legacy)
 TIDAL_PLAYLIST_CACHE_REFRESH_SECS|Playlist content refresh time, defaults to `0`
-TIDAL_LOGIN_SERVER_PORT|Required for PKCE authentication
+TIDAL_LOGIN_SERVER_PORT|Required for PKCE authentication, should not be mandatory for hires anymore.
 TIDAL_LAZY|Lazy connection, `true` or `false` (default)
 JELLYFIN_ENABLED|Enables the Jellyfin plugin, defaults to `no`
 JELLYFIN_HOSTNAME|Hostname for Jellyfin (mandatory)
