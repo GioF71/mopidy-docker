@@ -124,7 +124,14 @@ In order to correctly set the credentials for Tidal, the first run should be don
 
 `docker-compose run mopidy`
 
-Look at the displayed instructions, follow the link and authorize the application on Tidal.  
+Look at the displayed instructions. The log should present a line similar to the following:
+
+mopidy-app | INFO     2024-11-17 11:37:31,306 [39:TidalBackend-7 (_actor_loop)] mopidy_tidal.backend
+mopidy-app |   Please visit 'http://localhost:8989' or 'https://link.tidal.com/XXXXX' to authenticate
+
+follow the second link, authenticate with Tidal (if necessary) and authorize the new device on Tidal.  
+If, for any reason, you want to use the `PKCE` authentication, use the first link and follow the instructions that will be presented.  
+
 You will need an active Tidal subscription, of course.  
 After this action, you can stop the container (CTRL-C), and then start it normally using:
 
