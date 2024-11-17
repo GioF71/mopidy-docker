@@ -126,8 +126,10 @@ In order to correctly set the credentials for Tidal, the first run should be don
 
 Look at the displayed instructions. The log should present a line similar to the following:
 
+```text
 mopidy-app | INFO     2024-11-17 11:37:31,306 [39:TidalBackend-7 (_actor_loop)] mopidy_tidal.backend
 mopidy-app |   Please visit 'http://localhost:8989' or 'https://link.tidal.com/XXXXX' to authenticate
+```
 
 follow the second link, authenticate with Tidal (if necessary) and authorize the new device on Tidal.  
 If, for any reason, you want to use the `PKCE` authentication, use the first link and follow the instructions that will be presented.  
