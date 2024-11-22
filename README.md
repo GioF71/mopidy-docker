@@ -88,8 +88,10 @@ VOLUME|DESCRIPTION
 
 A simple docker-compose.yaml file.  
 Please note that this assumes your user of choice has uid `1000` and that the audio gid is `29`.  
-Also the selected audio output is the alsa device named `D10` (a Topping D10).  
+The audio gid is generally `29` for debian base distros, including Moode Audio.  
+Also the selected audio output is the alsa device named `D10` (matches the card name of a Topping D10).  
 The Tidal plugin is enabled with LOSSLESS quality.  
+Make sure you create the `config`, `cache` and `data` directories where you place this `docker-compose.yaml` file, and that those directories are writable for the user identified by the uid (`1000` in the example) and gid (`29` in the example) that you choose.  
 
 ```text
 ---
