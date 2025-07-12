@@ -1,5 +1,5 @@
 ARG BASE_IMAGE
-FROM ${BASE_IMAGE:-ubuntu:noble} AS BASE
+FROM ${BASE_IMAGE:-ubuntu:noble} AS base
 
 RUN apt-get update
 RUN apt-get install -y wget
@@ -37,7 +37,7 @@ RUN rm /build/cleanup.sh
 RUN rmdir /build
 
 FROM scratch
-COPY --from=BASE / /
+COPY --from=base / /
 
 LABEL maintainer="GioF71"
 LABEL source="https://github.com/GioF71/mopidy-docker"
