@@ -29,11 +29,11 @@ mopidy-jellyfin|[GitHub repo](https://github.com/jellyfin/mopidy-jellyfin)
 Repo Type|Link
 :---|:---
 Source Code|[GitHub](https://github.com/giof71/mopidy-docker)  
-Docker Images|[DockerHub](https://hub.docker.com/r/giof71/mopidy)
+Docker Images|[Docker Hub](https://hub.docker.com/r/giof71/mopidy)
 
 ## Build
 
-In order to build the docker image, switch to the root directory of the repo and use the following command:
+If, for any reason, you don't want or cannot use the images I publish to the [Docker Hub Repository](https://hub.docker.com/r/giof71/mopidy), you can build the image locally by switching to the root directory of the repository and issuing the following command:
 
 `./local-build.sh`
 
@@ -50,9 +50,9 @@ RESTORE_STATE|Restore last state on start, defaults to `no`
 TIDAL_ENABLED|Enables the Tidal plugin, defaults to `no`
 TIDAL_QUALITY|Set quality for the Tidal plugin, defaults to `LOSSLESS`
 TIDAL_LOGIN_METHOD|Login method, can be `BLOCK` (default), `AUTO` or `HACK`
-TIDAL_AUTH_METHOD|Authentication method, can be `OAUTH` (default) or `PKCE`
+TIDAL_AUTH_METHOD|Authentication method, can be `OAUTH` (default) or `PKCE` (legacy)
 TIDAL_PLAYLIST_CACHE_REFRESH_SECS|Playlist content refresh time, defaults to `0`
-TIDAL_LOGIN_SERVER_PORT|Required for PKCE authentication
+TIDAL_LOGIN_SERVER_PORT|Required for PKCE authentication, should not be mandatory for hires anymore.
 TIDAL_LAZY|Lazy connection, `true` or `false` (default)
 JELLYFIN_ENABLED|Enables the Jellyfin plugin, defaults to `no`
 JELLYFIN_HOSTNAME|Hostname for Jellyfin (mandatory)
@@ -88,8 +88,10 @@ VOLUME|DESCRIPTION
 
 A simple docker-compose.yaml file.  
 Please note that this assumes your user of choice has uid `1000` and that the audio gid is `29`.  
-Also the selected audio output is the alsa device named `D10` (a Topping D10).  
+The audio gid is generally `29` for debian base distros, including Moode Audio.  
+Also the selected audio output is the alsa device named `D10` (matches the card name of a Topping D10).  
 The Tidal plugin is enabled with LOSSLESS quality.  
+Make sure you create the `config`, `cache` and `data` directories where you place this `docker-compose.yaml` file, and that those directories are writable for the user identified by the uid (`1000` in the example) and gid (`29` in the example) that you choose.  
 
 ```text
 ---
@@ -124,7 +126,16 @@ In order to correctly set the credentials for Tidal, the first run should be don
 
 `docker-compose run mopidy`
 
-Look at the displayed instructions, follow the link and authorize the application on Tidal.  
+Look at the displayed instructions. The log should present a line similar to the following:
+
+```text
+mopidy-app | INFO     2024-11-17 11:37:31,306 [39:TidalBackend-7 (_actor_loop)] mopidy_tidal.backend
+mopidy-app |   Please visit 'http://localhost:8989' or 'https://link.tidal.com/XXXXX' to authenticate
+```
+
+follow the second link, authenticate with Tidal (if necessary) and authorize the new device on Tidal.  
+If, for any reason, you want to use the `PKCE` authentication, use the first link and follow the instructions that will be presented.  
+
 You will need an active Tidal subscription, of course.  
 After this action, you can stop the container (CTRL-C), and then start it normally using:
 
@@ -136,6 +147,8 @@ The application should be accessible at the host-ip at port 6680.
 
 Change Data|Major Changes
 :---|:---
+2024-11-13|Rebuild with version [v0.3.9](https://github.com/tehkillerbee/mopidy-tidal/releases/tag/v0.3.9)
+2024-11-10|Rebuild with version [v0.3.8](https://github.com/tehkillerbee/mopidy-tidal/releases/tag/v0.3.8)
 2024-09-08|Add support for the jellyfin plugin
 2024-09-05|Fixed user management
 2024-09-05|Switch to ubuntu noble
