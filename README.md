@@ -147,6 +147,7 @@ The application should be accessible at the host-ip at port 6680.
 
 Change Data|Major Changes
 :---|:---
+2025-09-14|Rebuild with version [v0.3.11](https://github.com/tehkillerbee/mopidy-tidal/releases/tag/v0.3.11)
 2025-07-12|Rebuild with version [v0.3.10](https://github.com/tehkillerbee/mopidy-tidal/releases/tag/v0.3.10)
 2024-11-13|Rebuild with version [v0.3.9](https://github.com/tehkillerbee/mopidy-tidal/releases/tag/v0.3.9)
 2024-11-10|Rebuild with version [v0.3.8](https://github.com/tehkillerbee/mopidy-tidal/releases/tag/v0.3.8)
