@@ -86,6 +86,12 @@ ENV MOBILE_ENABLED=""
 ENV MOBILE_TITLE=""
 ENV MOBILE_WS_URL=""
 
+ENV LOG_QUIET=""
+ENV LOG_VERBOSE=""
+
+ENV PYTHONPATH="/opt/mopidy-venv"
+ENV PATH="/opt/mopidy-venv/bin:$PATH"
+
 COPY app/bin/entrypoint.sh /app/bin/
 RUN chmod +x /app/bin/entrypoint.sh
 
