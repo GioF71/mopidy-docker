@@ -354,6 +354,33 @@ else
     echo "enabled = false" >> $CONFIG_DIR/mpd.conf
 fi
 
+ENABLE_MOBILE=0
+if [[ -z "${MOBILE_ENABLED}" ]]; then
+    ENABLE_MOBILE=0
+else
+    if [[ "${MOBILE_ENABLED^^}" == "YES" ]] || [[ "${MOBILE_ENABLED^^}" == "Y" ]]; then
+        ENABLE_MOBILE=1
+    elif [[ "${MOBILE_ENABLED^^}" != "NO" ]] && [[ "${MOBILE_ENABLED^^}" != "N" ]]; then
+        echo "Invalid MOBILE_ENABLED=[$MOBILE_ENABLED]"
+        exit 1
+    fi
+fi
+
+if [[ $ENABLE_MOBILE -eq 1 ]]; then
+    echo "[mobile]" > $CONFIG_DIR/mobile.conf
+    echo "enabled = true" >> $CONFIG_DIR/mobile.conf
+    if [[ -n "${MOBILE_TITLE}" ]]; then
+        echo "title = ${MOBILE_TITLE}" >> $CONFIG_DIR/mobile.conf
+    fi
+    if [[ -n "${MOBILE_WS_URL}" ]]; then
+        echo "ws_url = ${MOBILE_WS_URL}" >> $CONFIG_DIR/mobile.conf
+    fi
+else
+    echo "[mobile]" > $CONFIG_DIR/mobile.conf
+    echo "enabled = false" >> $CONFIG_DIR/mobile.conf
+fi
+
+
 echo "COMMAND_LINE=[${COMMAND_LINE}]"
 
 echo "Configuration: "
