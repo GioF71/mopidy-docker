@@ -23,6 +23,7 @@ Mopidy|[Main site](https://mopidy.com/)
 mopidy-tidal|[GitHub repo](https://github.com/tehkillerbee/mopidy-tidal)
 python-tidal|[GitHub repo](https://github.com/tamland/python-tidal)
 mopidy-jellyfin|[GitHub repo](https://github.com/jellyfin/mopidy-jellyfin)
+mopidy-mobile|[GitHub repo](https://github.com/tkem/mopidy-mobile)
 
 ## Repositories
 
@@ -70,6 +71,9 @@ SCROBBLER_ENABLED|Enables the Scrobbler plugin, defaults to `no`
 SCROBBLER_USERNAME|Last.FM username
 SCROBBLER_PASSWORD|Last.FM password
 MPD_ENABLED|Enables the MPD plugin, defaults to `no`
+MOBILE_ENABLED|Set to `yes` to enable mobile UI
+MOBILE_TITLE|Web application's title, defaults to `Mopidy Mobile on $hostname`
+MOBILE_WS_URL|WebSocket URL used to connect to your Mopidy server, set this when using a reverse proxy
 USER_MODE|Set to `yes` to enable user mode
 PUID|The uid for `USER_MODE`, defaults to `1000`
 PGID|The gid for `USER_MODE`, defaults to `1000`
