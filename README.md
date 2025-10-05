@@ -32,6 +32,12 @@ Repo Type|Link
 Source Code|[GitHub](https://github.com/giof71/mopidy-docker)  
 Docker Images|[Docker Hub](https://hub.docker.com/r/giof71/mopidy)
 
+## Contributors
+
+Contributor|PRs
+:---|:---
+[peterzen](!https://github.com/peterzen)|[#6](https://github.com/GioF71/mopidy-docker/pull/6) and [#7](https://github.com/GioF71/mopidy-docker/pull/7)
+
 ## Build
 
 If, for any reason, you don't want or cannot use the images I publish to the [Docker Hub Repository](https://hub.docker.com/r/giof71/mopidy), you can build the image locally by switching to the root directory of the repository and issuing the following command:
