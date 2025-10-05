@@ -346,8 +346,8 @@ if [[ $ENABLE_LOCAL -eq 1 ]]; then
     fi
     
     # scan_follow_symlinks
-    if [[ -n "${LOCAL_SCAN_FOLLOW_SYMLINKS}" ]]; then
-        echo "scan_follow_symlinks = ${LOCAL_SCAN_FOLLOW_SYMLINKS}" >> $CONFIG_DIR/local.conf
+    if [[ "${LOCAL_SCAN_FOLLOW_SYMLINKS^^}" == "YES" ]] || [[ "${LOCAL_SCAN_FOLLOW_SYMLINKS^^}" == "Y" ]]; then
+        echo "scan_follow_symlinks = true" >> $CONFIG_DIR/local.conf
     fi
     
     # scan_flush_threshold
@@ -376,8 +376,8 @@ if [[ $ENABLE_LOCAL -eq 1 ]]; then
     fi
     
     # use_artist_sortname
-    if [[ -n "${LOCAL_USE_ARTIST_SORTNAME}" ]]; then
-        echo "use_artist_sortname = ${LOCAL_USE_ARTIST_SORTNAME}" >> $CONFIG_DIR/local.conf
+    if [[ "${LOCAL_USE_ARTIST_SORTNAME^^}" == "YES" ]] || [[ "${LOCAL_USE_ARTIST_SORTNAME^^}" == "Y" ]]; then
+        echo "use_artist_sortname = true" >> $CONFIG_DIR/local.conf
     fi
     
     # album_art_files

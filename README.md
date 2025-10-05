@@ -70,13 +70,13 @@ LOCAL_ENABLED|Enables the Local plugin, defaults to `no`
 LOCAL_MEDIA_DIR|Path to local music directory, defaults to `/music`
 LOCAL_MAX_SEARCH_RESULTS|Number of search results to return, defaults to `100`
 LOCAL_SCAN_TIMEOUT|Milliseconds before giving up scanning a file
-LOCAL_SCAN_FOLLOW_SYMLINKS|Whether to follow symlinks, `true` or `false`
+LOCAL_SCAN_FOLLOW_SYMLINKS|Whether to follow symlinks, `yes` or `no`
 LOCAL_SCAN_FLUSH_THRESHOLD|Number of tracks before flushing progress, `0` to disable
-LOCAL_INCLUDED_FILE_EXTENSIONS|File extensions to include (comma or newline separated, e.g. `.flac,.mp3`)
-LOCAL_EXCLUDED_FILE_EXTENSIONS|File extensions to exclude (comma or newline separated)
+LOCAL_INCLUDED_FILE_EXTENSIONS|File extensions to include (comma separated, e.g. `.flac,.mp3`)
+LOCAL_EXCLUDED_FILE_EXTENSIONS|File extensions to exclude (comma separated, e.g. `.txt`)
 LOCAL_DIRECTORIES|List of top-level directory names and URIs for browsing
 LOCAL_TIMEOUT|Database connection timeout in seconds
-LOCAL_USE_ARTIST_SORTNAME|Use sortname field for ordering artist browse results, `true` or `false`
+LOCAL_USE_ARTIST_SORTNAME|Use sortname field for ordering artist browse results, `yes` or `no`
 LOCAL_ALBUM_ART_FILES|List of file names to check for album art (comma or newline separated)
 SCROBBLER_ENABLED|Enables the Scrobbler plugin, defaults to `no`
 SCROBBLER_USERNAME|Last.FM username
