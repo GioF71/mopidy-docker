@@ -327,7 +327,63 @@ fi
 if [[ $ENABLE_LOCAL -eq 1 ]]; then
     echo "[local]" > $CONFIG_DIR/local.conf
     echo "enabled = true" >> $CONFIG_DIR/local.conf
-    echo "media_dir = /music" >> $CONFIG_DIR/local.conf
+    
+    # media_dir
+    if [[ -n "${LOCAL_MEDIA_DIR}" ]]; then
+        echo "media_dir = ${LOCAL_MEDIA_DIR}" >> $CONFIG_DIR/local.conf
+    else
+        echo "media_dir = /music" >> $CONFIG_DIR/local.conf
+    fi
+    
+    # max_search_results
+    if [[ -n "${LOCAL_MAX_SEARCH_RESULTS}" ]]; then
+        echo "max_search_results = ${LOCAL_MAX_SEARCH_RESULTS}" >> $CONFIG_DIR/local.conf
+    fi
+    
+    # scan_timeout
+    if [[ -n "${LOCAL_SCAN_TIMEOUT}" ]]; then
+        echo "scan_timeout = ${LOCAL_SCAN_TIMEOUT}" >> $CONFIG_DIR/local.conf
+    fi
+    
+    # scan_follow_symlinks
+    if [[ "${LOCAL_SCAN_FOLLOW_SYMLINKS^^}" == "YES" ]] || [[ "${LOCAL_SCAN_FOLLOW_SYMLINKS^^}" == "Y" ]]; then
+        echo "scan_follow_symlinks = true" >> $CONFIG_DIR/local.conf
+    fi
+    
+    # scan_flush_threshold
+    if [[ -n "${LOCAL_SCAN_FLUSH_THRESHOLD}" ]]; then
+        echo "scan_flush_threshold = ${LOCAL_SCAN_FLUSH_THRESHOLD}" >> $CONFIG_DIR/local.conf
+    fi
+    
+    # included_file_extensions
+    if [[ -n "${LOCAL_INCLUDED_FILE_EXTENSIONS}" ]]; then
+        echo "included_file_extensions = ${LOCAL_INCLUDED_FILE_EXTENSIONS}" >> $CONFIG_DIR/local.conf
+    fi
+    
+    # excluded_file_extensions
+    if [[ -n "${LOCAL_EXCLUDED_FILE_EXTENSIONS}" ]]; then
+        echo "excluded_file_extensions = ${LOCAL_EXCLUDED_FILE_EXTENSIONS}" >> $CONFIG_DIR/local.conf
+    fi
+    
+    # directories
+    if [[ -n "${LOCAL_DIRECTORIES}" ]]; then
+        echo "directories = ${LOCAL_DIRECTORIES}" >> $CONFIG_DIR/local.conf
+    fi
+    
+    # timeout
+    if [[ -n "${LOCAL_TIMEOUT}" ]]; then
+        echo "timeout = ${LOCAL_TIMEOUT}" >> $CONFIG_DIR/local.conf
+    fi
+    
+    # use_artist_sortname
+    if [[ "${LOCAL_USE_ARTIST_SORTNAME^^}" == "YES" ]] || [[ "${LOCAL_USE_ARTIST_SORTNAME^^}" == "Y" ]]; then
+        echo "use_artist_sortname = true" >> $CONFIG_DIR/local.conf
+    fi
+    
+    # album_art_files
+    if [[ -n "${LOCAL_ALBUM_ART_FILES}" ]]; then
+        echo "album_art_files = ${LOCAL_ALBUM_ART_FILES}" >> $CONFIG_DIR/local.conf
+    fi
 else
     echo "[local]" > $CONFIG_DIR/local.conf
     echo "enabled = false" >> $CONFIG_DIR/local.conf
