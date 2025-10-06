@@ -36,7 +36,7 @@ Docker Images|[Docker Hub](https://hub.docker.com/r/giof71/mopidy)
 
 Contributor|PRs
 :---|:---
-[peterzen](https://github.com/peterzen)|[#6](https://github.com/GioF71/mopidy-docker/pull/6) and [#7](https://github.com/GioF71/mopidy-docker/pull/7)
+[peterzen](https://github.com/peterzen)|[#6](https://github.com/GioF71/mopidy-docker/pull/6) [#7](https://github.com/GioF71/mopidy-docker/pull/7) [#10](https://github.com/GioF71/mopidy-docker/pull/10)
 
 ## Build
 
@@ -95,6 +95,7 @@ USER_MODE|Set to `yes` to enable user mode
 PUID|The uid for `USER_MODE`, defaults to `1000`
 PGID|The gid for `USER_MODE`, defaults to `1000`
 AUDIO_GID|Group id for `USER_MODE`, set it to the group id of the group `audio` if `USER_MODE` is enabled
+LOG_LEVEL|0: quiet, 1: default, 2: verbose
 
 ### Volumes
 
