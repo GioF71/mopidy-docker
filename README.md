@@ -36,7 +36,7 @@ Docker Images|[Docker Hub](https://hub.docker.com/r/giof71/mopidy)
 
 Contributor|PRs
 :---|:---
-[peterzen](https://github.com/peterzen)|[#6](https://github.com/GioF71/mopidy-docker/pull/6) and [#7](https://github.com/GioF71/mopidy-docker/pull/7)
+[peterzen](https://github.com/peterzen)|[#6](https://github.com/GioF71/mopidy-docker/pull/6) [#7](https://github.com/GioF71/mopidy-docker/pull/7) [#10](https://github.com/GioF71/mopidy-docker/pull/10)
 
 ## Build
 
