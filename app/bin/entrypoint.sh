@@ -148,7 +148,21 @@ if [[ -n "${RESTORE_STATE}" ]]; then
     fi
 fi
 
-COMMAND_LINE="$COMMAND_LINE --config $CONFIG_DIR --option core/cache_dir=${CACHE_DIR} --option core/data_dir=${DATA_DIR}"
+LOG_SWITCH=""
+if [[ -n "${LOG_LEVEL}" ]]; then
+    if [[ "$LOG_LEVEL" -eq 0 ]]; then
+        LOG_SWITCH="-q"
+    elif [[ "$LOG_LEVEL" -eq 1 ]]; then
+        LOG_SWITCH=""
+    elif [[ "$LOG_LEVEL" -eq 2 ]]; then
+        LOG_SWITCH="-v"
+    else
+        echo "Invalid LOG_LEVEL=[$LOG_LEVEL]"
+        exit 1
+    fi
+fi
+
+COMMAND_LINE="$COMMAND_LINE $LOG_SWITCH --config $CONFIG_DIR --option core/cache_dir=${CACHE_DIR} --option core/data_dir=${DATA_DIR}"
 
 # IRIS web gui
 echo "[iris]" > $CONFIG_DIR/iris.conf
