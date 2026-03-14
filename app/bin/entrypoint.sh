@@ -239,6 +239,46 @@ if [[ $ENABLE_JELLYFIN -eq 1 ]]; then
     fi
 fi
 
+ENABLE_SUBSONIC=0
+if [[ -z "${SUBSONIC_ENABLED}" ]]; then
+    ENABLE_SUBSONIC=0
+else
+    if [[ "${SUBSONIC_ENABLED^^}" == "YES" ]] || [[ "${SUBSONIC_ENABLED^^}" == "Y" ]]; then
+        ENABLE_SUBSONIC=1
+    elif [[ "${SUBSONIC_ENABLED^^}" != "NO" ]] && [[ "${SUBSONIC_ENABLED^^}" != "N" ]]; then
+        echo "Invalid SUBSONIC_ENABLED=[$SUBSONIC_ENABLED]"
+        exit 1
+    fi
+fi
+
+if [[ $ENABLE_SUBSONIC -eq 1 ]]; then
+    echo "[subidy]" > $CONFIG_DIR/subsonic.conf
+    echo "enabled = true" >> $CONFIG_DIR/subsonic.conf
+
+    if [[ -n "${SUBSONIC_URL}" ]]; then
+        echo "url = ${SUBSONIC_URL}" >> $CONFIG_DIR/subsonic.conf
+    else
+        echo "Hostname not specified for Subsonic plugin!"
+        exit 1
+    fi
+    if [[ -n "${SUBSONIC_USERNAME}" ]]; then
+        echo "username = ${SUBSONIC_USERNAME}" >> $CONFIG_DIR/subsonic.conf
+    else
+        echo "Username not specified for Subsonic plugin!"
+    fi
+    if [[ -n "${SUBSONIC_PASSWORD}" ]]; then
+        echo "password = ${SUBSONIC_PASSWORD}" >> $CONFIG_DIR/subsonic.conf
+    else
+        echo "Password not specified for Subsonic plugin!"
+    fi
+    if [[ -n "${SUBSONIC_API_VERSION}" ]]; then
+        echo "api_version = ${SUBSONIC_API_VERSION}" >> $CONFIG_DIR/subsonic.conf
+    fi
+    if [[ -n "${SUBSONIC_LEGACY_AUTH}" ]]; then
+        echo "legacy_auth = ${SUBSONIC_LEGACY_AUTH}" >> $CONFIG_DIR/subsonic.conf
+    fi
+fi
+
 ENABLE_TIDAL=0
 if [[ -z "${TIDAL_ENABLED}" ]]; then
     ENABLE_TIDAL=0

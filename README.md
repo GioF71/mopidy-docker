@@ -72,6 +72,13 @@ JELLYFIN_LIBRARIES|Libraries for Jellyfin (optional, defaults to `Music`)
 JELLYFIN_ALBUM_ARTIST_SORT|Optional, defaults to `false`
 JELLYFIN_ALBUM_FORMAT|Optional, will default to `"{Name}"`
 JELLYFIN_MAX_BITRATE|Optional, numeric
+SUBSONIC_ENABLED|Enables the Subsonic Plugin plugin, defaults to `no`
+SUBSONIC_URL|URL for Subsonic (mandatory)
+SUBSONIC_USERNAME|Username for Subsonic
+SUBSONIC_PASSWORD|Password for Subsonic
+SUBSONIC_LEGACY_AUTH|Legacy authentication, defaults to `false`
+SUBSONIC_API_VERSION|Subsonic API version, defaults to 1.14.0
+
 FILE_ENABLED|Enables the File plugin, defaults to `no`
 LOCAL_ENABLED|Enables the Local plugin, defaults to `no`
 LOCAL_MEDIA_DIR|Path to local music directory, defaults to `/music`

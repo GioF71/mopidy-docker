@@ -25,8 +25,9 @@ RUN python3 -m pip install --target /opt/mopidy-venv --upgrade Mopidy-Scrobbler
 RUN python3 -m pip install --target /opt/mopidy-venv --upgrade Mopidy-MPD
 RUN python3 -m pip install --target /opt/mopidy-venv --upgrade mopidy-jellyfin
 RUN python3 -m pip install --target /opt/mopidy-venv --upgrade Mopidy-Mobile
+RUN python3 -m pip install --target /opt/mopidy-venv --upgrade Mopidy-Subidy
 
-RUN apt-get install -y gstreamer1.0-plugins-bad
+RUN apt-get install -y gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly
 
 RUN mkdir -p /build
 
@@ -76,6 +77,14 @@ ENV JELLYFIN_HOSTNAME=""
 ENV JELLYFIN_USERNAME=""
 ENV JELLYFIN_PASSWORD=""
 ENV JELLYFIN_LIBRARIES=""
+
+ENV SUBSONIC_ENABLED=""
+ENV SUBSONIC_URL=""
+ENV SUBSONIC_USERNAME=""
+ENV SUBSONIC_PASSWORD=""
+ENV SUBSONIC_LEGACY_AUTH=""
+ENV SUBSONIC_API_VERSION=""
+
 
 ENV FILE_ENABLED=""
 ENV LOCAL_ENABLED=""
